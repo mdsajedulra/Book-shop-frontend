@@ -9,6 +9,9 @@ const Hero = () => {
                 <button className="btn btn-primary">Browse Books</button>
             </Link>
         </section>
+
+
+
     )
 }
 
