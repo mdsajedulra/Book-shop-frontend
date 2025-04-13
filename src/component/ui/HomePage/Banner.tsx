@@ -20,7 +20,7 @@ const Banner = () => {
         {/* Image Section */}
         <div className="md:w-2/5 w-full h-64 md:h-80">
           <img
-            src="/src/assets/promotional banner.png"
+            src="https://i.ibb.co.com/nNZTbrXp/promotional-banner.png"
             alt="Promotional Banner"
             className="w-11/12  object-cover"
           />

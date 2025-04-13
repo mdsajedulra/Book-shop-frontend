@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useMakePaymentMutation } from "../redux/features/api/endpoints/paymentApi";

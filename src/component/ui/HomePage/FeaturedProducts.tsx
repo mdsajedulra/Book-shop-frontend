@@ -56,14 +56,14 @@ const FeaturedProducts = () => {
               <img
                 src={book.cover}
                 alt={book.title}
-                className="h-48 w-full object-cover"
+                className="h-110 w-full "
               />
             </figure>
             <div className="card-body">
               <h3 className="text-lg font-semibold">{book.title}</h3>
               <p className="text-sm text-gray-500">{book.author}</p>
               <div className="card-actions justify-end">
-                <button onClick={() => navigate(`book-details/${book._id}`)} className="btn btn-primary btn-sm">View</button>
+                <button onClick={() => navigate(`book-details/${book._id}`)} className="btn btn-primary btn-sm">View Details</button>
               </div>
             </div>
           </div>

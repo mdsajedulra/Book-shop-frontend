@@ -39,13 +39,14 @@ const BookDetailsPage = () => {
           <p className="text-base text-gray-700 mb-6">{book.data.description || "No description available."}</p>
           <button
             className="btn btn-primary"
-            disabled={!book.data.inStock || user?.role=="admin"}
+            disabled={!book.data.inStock || !user?.role}
             onClick={() => {
+              
               navigate(`/${user?.role}/checkout/${book.data._id}`);
             }}
           >
            {
-            user?.role==="admin"? "Only user can order":"Buy Now"
+            user?.role==="admin" || !user?.role? "Only user and authorized can order":"Buy Now"
            }
           </button>
         </div>
