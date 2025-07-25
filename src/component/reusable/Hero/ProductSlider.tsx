@@ -1,4 +1,4 @@
-"use client";
+
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, PanInfo, AnimatePresence } from "framer-motion";
@@ -33,22 +33,6 @@ interface CardProps {
 
 // --- Helper Components & Icons ---
 
-const SparklesIcon: React.FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M9.93 2.25 12 7.5l2.07-5.25a.5.5 0 0 1 .9 0L17.25 8.5l4.16.34a.5.5 0 0 1 .29.88l-3.2 3.1.95 4.5a.5.5 0 0 1-.73.53L12 14.5l-3.72 2.33a.5.5 0 0 1-.73-.53l.95-4.5-3.2-3.1a.5.5 0 0 1 .29-.88l4.16-.34Z" />
-  </svg>
-);
 
 const ChevronLeftIcon: React.FC<IconProps> = ({ className }) => (
   <svg
@@ -84,80 +68,7 @@ const ChevronRightIcon: React.FC<IconProps> = ({ className }) => (
   </svg>
 );
 
-const PlayIcon: React.FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <polygon points="5,3 19,12 5,21" />
-  </svg>
-);
 
-const PauseIcon: React.FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect x="6" y="4" width="4" height="16" />
-    <rect x="14" y="4" width="4" height="16" />
-  </svg>
-);
-
-const MaximizeIcon: React.FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-    <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-    <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-    <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-  </svg>
-);
-
-const MinimizeIcon: React.FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M8 3v3a2 2 0 0 1-2 2H3" />
-    <path d="M21 8h-3a2 2 0 0 1-2-2V3" />
-    <path d="M3 16h3a2 2 0 0 1 2 2v3" />
-    <path d="M16 21v-3a2 2 0 0 1 2-2h3" />
-  </svg>
-);
 
 const Badge: React.FC<BadgeProps> = ({ children, className }) => (
   <div
@@ -255,7 +166,7 @@ const cardData: CardData[] = [
 
 // --- Enhanced Carousel Component ---
 export default function Herocarousel() {
-  const { data: response, isLoading, isError } = useGetBooksQuery();
+  const { data: response,  } = useGetBooksQuery();
   console.log(response?.data);
 
   const [activeIndex, setActiveIndex] = useState(
@@ -263,8 +174,9 @@ export default function Herocarousel() {
   );
   const [isPaused, setIsPaused] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showThumbnails, setShowThumbnails] = useState(false);
-  const [autoplaySpeed, setAutoplaySpeed] = useState(2000);
+  
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  
   const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Function to go to the next slide
@@ -282,23 +194,23 @@ export default function Herocarousel() {
         clearInterval(autoplayIntervalRef.current);
       }
       if (!isPaused) {
-        autoplayIntervalRef.current = setInterval(goToNext, autoplaySpeed);
+        autoplayIntervalRef.current = setInterval(goToNext, 2000);
       }
     },
-    [isPaused, autoplaySpeed, goToNext]
+    [isPaused, 2000, goToNext]
   );
 
   // Set up and clear autoplay interval
   useEffect(() => {
     if (!isPaused) {
-      autoplayIntervalRef.current = setInterval(goToNext, autoplaySpeed);
+      autoplayIntervalRef.current = setInterval(goToNext, 2000);
     }
     return () => {
       if (autoplayIntervalRef.current) {
         clearInterval(autoplayIntervalRef.current);
       }
     };
-  }, [isPaused, activeIndex, autoplaySpeed, goToNext]);
+  }, [isPaused, activeIndex, 2000, goToNext]);
 
   // Keyboard controls
   useEffect(() => {
@@ -335,6 +247,7 @@ export default function Herocarousel() {
     event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
+    console.log(event);
     const dragThreshold = 75;
     const dragOffset = info.offset.x;
     if (dragOffset > dragThreshold) {
@@ -389,7 +302,7 @@ export default function Herocarousel() {
 
           {/* Thumbnail Navigation */}
           <AnimatePresence>
-            {showThumbnails && (
+            {false && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
@@ -461,26 +374,7 @@ export default function Herocarousel() {
           </div>
 
           {/* Speed Control */}
-          {/* <div className="flex items-center justify-center gap-4 mt-4">
-            <span className="text-sm text-gray-600 dark:text-gray-400">Speed:</span>
-            <input
-              type="range"
-              min="1000"
-              max="8000"
-              step="500"
-              value={autoplaySpeed}
-              onChange={(e) => setAutoplaySpeed(Number(e.target.value))}
-              className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
-            />
-            <span className="text-sm text-gray-600 dark:text-gray-400">{(autoplaySpeed / 1000).toFixed(1)}s</span>
-          </div> */}
-
-          {/* Keyboard Shortcuts Help */}
-          {/* <div className="mt-4 text-center">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              Use arrow keys to navigate, spacebar to pause/play, F for fullscreen, ESC to exit fullscreen
-            </p>
-          </div> */}
+    
         </div>
       </div>
     </section>
