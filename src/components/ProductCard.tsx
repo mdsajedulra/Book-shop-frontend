@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export type TProduct = {
   _id: string;
-  cover: string
+  cover: string;
   title: string;
   author: string;
   category: string;
@@ -16,26 +16,26 @@ export type TProduct = {
 };
 
 const ProductCard = ({ product }: { product: TProduct }) => {
-  const { _id, author, title, category, price ,cover} = product;
+  const { _id, author, title,  price, cover } = product;
   return (
     <div className="bg-base-200">
-      <div className="px-4 py-6 rounded-lg">
-        <div className="space-y-2">
-          <div>
-            <img src={cover} alt="" />
+      <Link to={`/book-details/${_id}`} >
+        
+        <div className="px-4 py-6 rounded-lg">
+          <div className="space-y-2">
+            <div>
+              <img className="rounded w-full" src={cover} alt="" />
             </div>
-          <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-center mb-3">
-            {title}
-          </h1>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-left mb-3">
+              {title}
+            </h1>
 
-          <p className="text-sm md:text-base">Author : {author}</p>
-          <p className="text-sm md:text-base">Category : {category}</p>
-          <p className="text-sm md:text-base">Price : ${price}</p>
-          <Link to={`/book-details/${_id}`} className="btn btn-primary">
-            View Details
-          </Link>
+            <p className=" text-sm md:text-base">Author : {author}</p>
+            {/* <p className="text-sm md:text-base">Category : {category}</p> */}
+            <p className="text-sm md:text-base">Price : ${price}</p>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

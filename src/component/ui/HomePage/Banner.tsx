@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <section className="mt-20 flex items-center justify-center px-4">
-      <div className="flex flex-col-reverse md:flex-row items-center bg-base-200 rounded-lg overflow-hidden shadow-md max-w-6xl w-full">
+    <section className="mt-20 mx-auto container w-full flex items-center justify-center px-4">
+      <div className="flex flex-col-reverse md:flex-row items-center bg-base-200 rounded-lg overflow-hidden shadow-md  w-full">
         {/* Text Content */}
         <div className="md:w-3/5 w-full p-6 flex flex-col justify-center text-center md:text-left">
           <h2 className="text-2xl md:text-4xl font-bold mb-4">Explore New Reads</h2>

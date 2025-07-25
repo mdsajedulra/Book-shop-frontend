@@ -32,7 +32,7 @@ const AllProducts = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
+    <div className=" container mx-auto px-4 py-12">
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">
         All Books – Explore Our Collection
       </h1>
@@ -71,7 +71,7 @@ const AllProducts = () => {
 
           {/* if data available */}
           {!isLoading && data.data?.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
               {data.data.map((product: TProduct) => (
                 <ProductCard key={product._id} product={product} />
               ))}

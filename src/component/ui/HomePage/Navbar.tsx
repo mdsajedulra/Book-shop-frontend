@@ -20,10 +20,12 @@ const Navbar = () => {
 
     return (
 
-        <nav className="navbar bg-base-100 shadow-md">
-            <div className="flex-1">
+        <nav className="navbar bg-base-100 shadow-md ">
+            <div className="container flex items-center justify-between  my-0 mx-auto">
+
+            <div className="">
                 <NavLink to={'/'}>
-                    📚 BookShop
+                    <img className="w-30 py-3" src="/src/assets/Book-shop-logo.png" alt="" />
                 </NavLink>
             </div>
 
@@ -99,6 +101,7 @@ const Navbar = () => {
                     )}
                 </ul>
             </div >
+            </div>
         </nav >
     )
 }

@@ -1,7 +1,9 @@
+import Testimonial from "@/component/ui/HomePage/Testimonials";
 import Banner from "../component/ui/HomePage/Banner";
 import FeaturedProducts from "../component/ui/HomePage/FeaturedProducts";
 import Hero from "../component/ui/HomePage/Hero";
-import Testimonials from "../component/ui/HomePage/Testimonials";
+import NewlyReleasedProduct from "@/component/ui/HomePage/NewlyReleasdProducts";
+
 
 const HomePage = () => {
   return (
@@ -15,9 +17,11 @@ const HomePage = () => {
 
       {/* Featured Books */}
       <FeaturedProducts></FeaturedProducts>
+      <NewlyReleasedProduct/>
 
       {/* Testimonials */}
-      <Testimonials></Testimonials>
+      {/* <Testimonials></Testimonials> */}
+      <Testimonial/>
     </div>
   );
 };

@@ -10,12 +10,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const FeaturedProducts = () => {
+const NewlyReleasedProduct = () => {
   const { data: response, isLoading, isError } = useGetBooksQuery();
   console.log(response);
 
   const featuredBooks = Array.isArray(response?.data)
-    ? response.data.slice(0, 6)
+    ? response.data.slice(6, 12)
     : [];
 
   if (isLoading) {
@@ -39,7 +39,7 @@ const FeaturedProducts = () => {
 
       <div className="">
         <div className="w-full">
-          <h1 className="text-2xl font-bold pt-5">Pick your book</h1>
+          <h1 className="text-2xl font-bold pt-5">Newly Released Product</h1>
           <Carousel
             opts={{
               align: "start",
@@ -85,4 +85,4 @@ const FeaturedProducts = () => {
   );
 };
 
-export default FeaturedProducts;
+export default NewlyReleasedProduct;
